@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Auction 2026 | Elite Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ipl-navy: #060d37;
+            --ipl-gold: #efb810;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(6, 13, 55, 0.9), rgba(6, 13, 55, 0.95)), 
+                        url('https://images.unsplash.com/photo-1540747913346-19e3ad643121?q=80&w=2000');
+            background-size: cover;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+        .oswald { font-family: 'Oswald', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .gold-glow { text-shadow: 0 0 10px rgba(239, 184, 16, 0.5); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--ipl-gold); border-radius: 10px; }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-8 flex justify-between items-center border-b border-white/10">
+        <h1 class="oswald text-2xl font-bold tracking-tighter text-yellow-500">IPL <span class="text-white">AUCTION 2026</span></h1>
+        <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest">
+            <a href="#auction" class="hover:text-yellow-500 transition">Auction</a>
+            <a href="#stats" class="hover:text-yellow-500 transition">Player Stats</a>
+            <a href="#history" class="hover:text-yellow-500 transition">IPL Details</a>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-10 px-6 text-center">
+        <div class="inline-block glass px-8 py-3 rounded-full border border-yellow-500/30 mb-4">
+            <span class="text-gray-400 text-xs uppercase tracking-widest">Available Purse</span>
+            <h2 class="text-4xl font-bold text-green-400 oswald">₹ 120.00 Cr</h2>
+        </div>
+    </header>
+
+    <main id="auction" class="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 px-4 pb-20">
+        
+        <div class="lg:col-span-8 space-y-8">
+            <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 text-[10rem] opacity-5 font-black oswald uppercase leading-none select-none" id="bg-name">PLAYER</div>
+                
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 bg-gradient-to-tr from-yellow-600 to-yellow-300 rounded-2xl rotate-3 shadow-2xl overflow-hidden">
+                            <img id="player-img" src="https://www.iplt20.com/assets/images/default-player.png" class="w-full h-full object-cover -rotate-3 scale-110" alt="Player">
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 text-center md:text-left">
+                        <span id="player-set" class="text-yellow-500 text-sm font-bold uppercase tracking-[0.3em]">Set 1: Marquee</span>
+                        <h2 id="player-name" class="oswald text-6xl font-bold mt-2 uppercase italic leading-none">Virat Kohli</h2>
+                        <p id="player-role" class="text-gray-400 mt-4 text-lg">Top Order Batter | Right Hand Bat</p>
+                        
+                        <div class="flex gap-4 mt-8 justify-center md:justify-start">
+                            <div class="text-center bg-white/5 px-6 py-3 rounded-xl">
+                                <p class="text-[10px] uppercase text-gray-500">Base Price</p>
+                                <p id="base-price" class="font-bold text-xl">₹ 2.00 Cr</p>
+                            </div>
+                            <div class="text-center bg-yellow-500/10 border border-yellow-500/20 px-6 py-3 rounded-xl">
+                                <p class="text-[10px] uppercase text-yellow-500">Current Bid</p>
+                                <p id="current-bid" class="font-bold text-3xl text-yellow-500 oswald">₹ 0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button onclick="placeBid(0.25)" class="glass hover:bg-yellow-500 hover:text-black py-5 rounded-2xl font-bold text-xl transition-all">RAISE ₹ 25L</button>
+                    <button onclick="placeBid(0.50)" class="bg-yellow-500 text-black py-5 rounded-2xl font-bold text-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(239,184,16,0.3)]">RAISE ₹ 50L</button>
+                </div>
+            </div>
+
+            <section id="stats" class="glass rounded-[2rem] p-8">
+                <h3 class="oswald text-2xl mb-6 text-yellow-500 underline decoration-2 underline-offset-8 italic">PLAYER T20 RECORD</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4 border border-white/5 rounded-2xl">
+                        <p class="text-xs text-gray-500 uppercase">Matches</p>
+                        <p class="text-2xl font-bold">252</p>
+                    </div>
+                    <div class="p-4 border border-white/5 rounded-2xl">
+                        <p class="text-xs text-gray-500 uppercase">Runs/Wkts</p>
+                        <p class="text-2xl font-bold">8004</p>
+                    </div>
+                    <div class="p-4 border border-white/5 rounded-2xl">
+                        <p class="text-xs text-gray-500 uppercase">Strike Rate</p>
+                        <p class="text-2xl font-bold">131.97</p>
+                    </div>
+                    <div class="p-4 border border-white/5 rounded-2xl">
+                        <p class="text-xs text-gray-500 uppercase">IPL Titles</p>
+                        <p class="text-2xl font-bold">0</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="lg:col-span-4 space-y-8">
+            <div class="glass rounded-[2rem] p-6 h-[600px] flex flex-col">
+                <h3 class="oswald text-xl mb-4 border-b border-white/10 pb-4 flex justify-between">
+                    LIVE LOGS <span class="text-red-500 text-xs animate-pulse font-sans">● RECORDING</span>
+                </h3>
+                <div id="logs" class="flex-1 overflow-y-auto space-y-4 pr-2">
+                    </div>
+                <div id="leading-team" class="mt-4 p-4 bg-yellow-500 text-black rounded-xl text-center font-bold uppercase text-sm">
+                    No active bidder
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <section id="history" class="container mx-auto py-20 px-4 border-t border-white/10">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="oswald text-5xl font-bold mb-6">THE 2026 MEGA AUCTION</h2>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    As we enter the 2026 season, the Indian Premier League continues to be the world's premier T20 league. This mock auction uses the updated <strong>₹125 Crore</strong> salary cap rules. 
+                </p>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-center"><span class="w-2 h-2 bg-yellow-500 mr-3"></span> Minimum 18 players per squad</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-yellow-500 mr-3"></span> Maximum 8 Overseas players</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-yellow-500 mr-3"></span> RTM cards available based on retention</li>
+                </ul>
+            </div>
+            <div class="glass p-10 rounded-3xl text-center">
+                <div class="text-8xl mb-4">🏆</div>
+                <h4 class="oswald text-2xl font-bold">DEFENDING CHAMPIONS</h4>
+                <p class="text-yellow-500 font-bold mt-2 uppercase tracking-widest">Kolkata Knight Riders</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-10 text-gray-600 text-xs uppercase tracking-[0.5em]">
+        IPL Mock Auction Portal &copy; 2026
+    </footer>
+
+    <a href="#" class="fixed bottom-10 right-10 bg-yellow-500 text-black w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-2xl hover:-translate-y-2 transition">↑</a>
+
+    <script>
+        // Place your Firebase Config here
+        // ... (Refer to previous code block)
+    </script>
+</body>
+</html>
